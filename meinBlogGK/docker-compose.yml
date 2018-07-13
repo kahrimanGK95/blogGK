@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mein-blog-gk:
+    build: .
+    image: blog/gk
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+      - "2223:22"
