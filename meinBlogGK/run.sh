@@ -1,1 +1,0 @@
-docker run --name meinBlogGK -d -p 8080:8080 2223:22 blog/gk
