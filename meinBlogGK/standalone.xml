@@ -163,7 +163,7 @@
         			enabled="true" jta="true"
        				 use-java-context="true" use-ccm="true">
     				<connection-url>
-        				jdbc:mysql://localhost:3308/meinbloggk
+        				jdbc:mysql://db:3308/meinbloggk
     				</connection-url>
     			<driver>
         			mysql
@@ -173,7 +173,7 @@
            			 root
         		</user-name>
        			 <password>
- 
+ 					root
         		</password>
     			</security>
     			<statement>

@@ -1,9 +1,9 @@
 FROM jboss/wildfly
 MAINTAINER Goekhan Kahriman
 
-# Ordner für mysql erstellen
+# Ordner fuer mysql erstellen
 # connector in den ordner main kopieren
-# module.xml in den ordner hinzufügen
+# module.xml in den ordner hinzufuegen
 # standalone.xml aktualisieren
 COPY mysql-connector-java-8.0.11.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 ADD module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/

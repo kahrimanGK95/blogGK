@@ -15,7 +15,7 @@ public class DataConnect {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection
-					("jdbc:mysql://127.0.0.1:3308/meinbloggk", "root", "");
+					("jdbc:mysql://db:3306/meinbloggk?useSSL=false&allowPublicKeyRetrieval=true", "root", "root");
 			return con;
 		} catch(Exception e) {
 			LOG.error(e.getMessage(),e);

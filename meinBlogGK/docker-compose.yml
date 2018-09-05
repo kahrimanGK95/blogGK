@@ -1,25 +1,20 @@
-version: '3.3'
+version: '3'
 services:
+  db:
+    image: mysql:8.0.11
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meinbloggk
+    ports:
+    - "3308:3306"
+    volumes:
+    - ./sql/initializeDB.sql:/docker-entrypoint-initdb.d/initializeDB.sql
   mein-blog-gk:
+    depends_on:
+    - db
     build: .
     image: blog/gk:latest
     ports:
       - "8080:8080"
-      - "9990:9990"
-      - "2223:22"
-    links:
-      - db
     environment:
       DEBUG: 'true'
-  db:
-    image: mysql:8.0.11
-    volumes:
-      - db_data:/var/lib/mysql
-    ports:
-    - "3308:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: meinbloggk
-      
-volumes:
-      db_data:

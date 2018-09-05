@@ -20,7 +20,7 @@ public class LoginDAO {
 
 		try {
 			connect = DataConnect.getConnection();
-			ps = connect.prepareStatement("Select username, password from Users where username = ? and password = ?");
+			ps = connect.prepareStatement("Select username, password from users where username = ? and password = ?");
 
 			ps.setString(1, user);
 			ps.setString(2, password);
