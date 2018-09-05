@@ -9,3 +9,5 @@ CREATE TABLE `users` (
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `users` VALUES (1,'Kahriman','Gokhan1995');
