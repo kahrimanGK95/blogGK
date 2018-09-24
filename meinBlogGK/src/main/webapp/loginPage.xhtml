@@ -2,31 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>LoginPage für Blog</title>
 </h:head>
 <h:body>
+<h:outputStylesheet library="css" name="styles.css" />
+	<div class="komplett">
 
-	<h:form>
-		<h3>LoginPage für meinBlogGK</h3>
-		<h:outputText value="Benutzername:" />
-		<br />
-		<h:inputText id="username" value="#{loginBean.username}" />
-		<h:message for="username"></h:message>
-		<br />
+		<div class="welcome">
 
-		<br />
+			<h1 style="color: #ffffff; font-size: 28px;">Herzlich Willkommen</h1>
+			<p style="color: #ffffff; font-size: 16px;">Sie befinden sich auf
+				Gökhans-Blog Seite.</p>
+		</div>
 
-		<h:outputText value="Passwort:" />
-		<br />
-		<h:inputText id="password" value="#{loginBean.password}" />
-		<h:message for="password"></h:message>
-		<br />
+		<div class="login">
+			<h:form id="loginForm" style="width:35%;">
+				<p:fieldset legend="Login">
+					<h:panelGrid columns="3" cellpadding="5">
+						<h:outputText value="Benutzername:" />
+						<h:inputText id="username" value="#{loginBean.username}" />
+						<h:message for="username"></h:message>
+						<h:outputText value="Passwort:" />
+						<h:inputText id="password" value="#{loginBean.password}" />
+						<h:message for="password"></h:message>
+						<h:commandButton action="#{loginBean.checkLogin}"
+							value="Einloggen" />
+					</h:panelGrid>
+				</p:fieldset>
+			</h:form>
+		</div>
 
-		<h:commandButton action="#{loginBean.checkLogin}" value="Einloggen" />
-	</h:form>
+		<div class="footer">
+			<p>Copyright © 2018 by Gökhan Kahriman</p>
+		</div>
 
+	</div>
 </h:body>
 
 

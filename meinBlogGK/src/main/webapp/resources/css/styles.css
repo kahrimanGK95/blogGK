@@ -1,0 +1,26 @@
+.komplett {
+	padding: 10px;
+}
+
+.welcome {
+	background-image: linear-gradient(277deg, #1b81d7 0%, #1f4869 100%);
+	height: auto;
+	padding: 32px;
+}
+
+.login {
+	padding-top: 20px;
+	margin: 0 auto;
+	width: 35%;
+}
+
+.footer {
+	background-image: linear-gradient(277deg, #1b81d7 0%, #1f4869 100%);
+	color: white;
+	height: auto;
+	padding: 32px;
+	margin: 0 auto;
+	text-align: center;
+	bottom: 0;
+	position: absolute;
+}
