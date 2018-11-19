@@ -13,7 +13,7 @@ import meinBlogGK.jsf.utils.SessionUtils;
 
 @Named
 @SessionScoped
-public class LoginBean implements Serializable {
+public class UserBean implements Serializable {
 
 	private static final long serialVersionUID = -8852173624112892226L;
 	

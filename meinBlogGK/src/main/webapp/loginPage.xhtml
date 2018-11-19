@@ -8,7 +8,7 @@
 	<title>LoginPage für Blog</title>
 </h:head>
 <h:body>
-<h:outputStylesheet library="css" name="styles.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
 	<div class="komplett">
 
 		<div class="welcome">
@@ -23,13 +23,13 @@
 				<p:fieldset legend="Login">
 					<h:panelGrid columns="3" cellpadding="5">
 						<h:outputText value="Benutzername:" />
-						<h:inputText id="username" value="#{loginBean.username}" />
+						<h:inputText id="username" value="#{userBean.username}" />
 						<h:message for="username"></h:message>
 						<h:outputText value="Passwort:" />
-						<h:inputText id="password" value="#{loginBean.password}" />
+						<h:inputText id="password" value="#{userBean.password}" />
 						<h:message for="password"></h:message>
-						<h:commandButton action="#{loginBean.checkLogin}"
-							value="Einloggen" />
+						<h:commandButton id="einloggen" value="Einloggen"
+							action="#{userBean.checkLogin}" />
 					</h:panelGrid>
 				</p:fieldset>
 			</h:form>
