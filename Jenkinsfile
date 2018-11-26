@@ -41,7 +41,7 @@ pipeline{
 				/* Image bauen, ohne Pushen*/
 				dir('./docker/dockerbuild/mysql/'){
 					script{
-						docker.withRegistry('https://hub.docker.com/r/goekhan1995/meinblog_db/', 'dockerhub') {
+						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
 							docker.build('meinblog_db/app').push("${VERSION}")
 							
 						}
