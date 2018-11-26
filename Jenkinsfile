@@ -60,8 +60,9 @@ pipeline{
 				/* Image bauen, ohne Pushen*/
 				dir('./docker/dockerbuild/jboss'){
 					script{
-						docker.withRegistry('https://hub.docker.com/r/goekhan1995/meinblog/', 'dockerhub') {
-							docker.build('meinblog/app').push("${VERSION}")
+						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+							image_name = "goekhan1995/meinblog"
+							docker.build("${image_name}").push("${VERSION}")
 							
 						}
 					}
