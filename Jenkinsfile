@@ -41,10 +41,9 @@ pipeline{
 				/* Image bauen, ohne Pushen*/
 				dir('./docker/dockerbuild/mysql/'){
 					script{
-						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+						docker.withRegistry('https://registry.hub.docker.com/goekhan1995', 'docker-hub-credentials') {
 							db_image = docker.build('meinblog_db/app')
 							db_image.push("${VERSION}")
-							db_image.push("latest")
 							
 							
 						}
