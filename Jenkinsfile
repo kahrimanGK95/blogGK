@@ -42,11 +42,8 @@ pipeline{
 				dir('./docker/dockerbuild/mysql/'){
 					script{
 						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-							db_image_name = "meinblog_db/app"
-							db_image = docker.build("${db_image_name}")
-							db_image.push("goekhan1995/db_image_name:${VERSION}")
-							
-							
+							db_image_name = "goekhan1995/meinblog_db"
+							db_image = docker.build("${db_image_name}").push("${VERSION}")				
 						}
 					}
 				}
