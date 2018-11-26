@@ -11,7 +11,6 @@ pipeline{
 	environment {
 		IMAGE = ""
 		VERSION = ""
-		PATH="C:\Users\gokha\.m2\settings.xml"
 		
 	}
 	
@@ -30,7 +29,7 @@ pipeline{
 				}
 				
 				dir('./meinBlogGK/') {
-					sh 'mvn -U clean install -P docker -DskipTests=true --settings ${PATH}'
+					sh 'mvn -U clean install -P docker -DskipTests=true'
 				}
 			
 			}
