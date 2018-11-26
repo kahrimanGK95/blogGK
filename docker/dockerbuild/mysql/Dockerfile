@@ -1,1 +1,1 @@
-FROM goekhan1995/meinblog_db
+FROM goekhan1995/meinblog_db:0.1
