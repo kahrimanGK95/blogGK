@@ -4,8 +4,8 @@ pipeline{
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
     tools {
-        maven 'maven3.5.2'
-        jdk 'JDK8u144'
+        maven 'Apache Maven 3.5.2'
+        jdk 'JDK 1.8.0_144'
     }
 	
 	environment {
