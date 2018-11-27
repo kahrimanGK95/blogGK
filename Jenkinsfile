@@ -70,27 +70,4 @@ pipeline{
 			}
 		}
 	}
-		
-	post{
-		failure{
-            script{
-				mail (
-					from: 'gokhan_1995@hotmail.de',
-					to: 'gokhan_1995@hotmail.de',
-					subject: "Failure: MeinBlog-Build-Pipeline '${env.JOB_NAME}' (${env.BUILD_NUMBER})",
-					body: "Die MeinBlog-Pipeline zum Docker-Bau ist fehlgeschlagen. Einsehbar unter ${env.BUILD_URL}."
-				)
-            }             
-        }
-		success{
-            script{
-				mail (
-					from: 'gokhan_1995@hotmail.de',
-					to: 'gokhan_1995@hotmail.de',
-					subject: "Failure: MeinBlog-Build-Pipeline '${env.JOB_NAME}' (${env.BUILD_NUMBER})",
-					body: "Die MeinBlog-Pipeline zum Docker-Bau war erfolgreich. Einsehbar unter ${env.BUILD_URL}."
-				)
-            }             
-        }
-	}
 }
