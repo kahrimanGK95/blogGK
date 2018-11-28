@@ -37,7 +37,7 @@ pipeline{
 					sh 'echo Starting meinBlogImage'
 					def meinBlogImage = docker.image('goekhan1995/meinblog:0.0.1-SNAPSHOT')
 					meinBlogImage.pull()
-					MEINBLOG = meinBlogImage.run('--name mein-blog-gk --depends_on db')
+					MEINBLOG = meinBlogImage.run('--name mein-blog-gk --link db')
 					sh 'echo MEINBLOG Container-ID:'+MEINBLOG.id
 					
 					sh 'echo Etwas warten damit meinBlog Zeit hat bereit zu werden...'
