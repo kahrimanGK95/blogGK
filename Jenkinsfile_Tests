@@ -1,0 +1,89 @@
+pipeline{
+	agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+		disableConcurrentBuilds()
+    }
+	tools {
+        maven 'Apache Maven 3.5.2'
+        jdk 'JDK 1.8.0_144'
+    }
+	environment {
+		VERSION = ""
+		MEINBLOG = ""
+		DB_MEINBLOG = ""
+	}
+	stages{
+		stage('docker-start'){
+			steps{
+				script{
+					sh "docker container stop mein-blog-gk || true && docker container rm mein-blog-gk || true"
+				    sh "docker container stop db || true && docker container rm db || true"
+					sh "docker container stop seleniumRemote || true && docker container rm seleniumRemote || true"
+					
+					dir('./meinBlogGK/') {
+						VERSION = readMavenPom().getVersion()
+						echo "${VERSION}"
+					}
+				}
+				script{
+					sh 'echo Starting db_meinBlogImage'
+					def db_meinBlogImage = docker.image('goekhan1995/meinblog_db:0.0.1-SNAPSHOT')
+					db_meinBlogImage.pull()
+					DB_MEINBLOG = db_meinBlogImage.run('--name db')
+					sh 'echo DB_MEINBLOG Container-ID:'+DB_MEINBLOG.id
+				}
+				script{
+					sh 'echo Starting meinBlogImage'
+					def meinBlogImage = docker.image('goekhan1995/meinblog:0.0.1-SNAPSHOT')
+					meinBlogImage.pull()
+					MEINBLOG = meinBlogImage.run('--name mein-blog-gk --depends_on db')
+					sh 'echo MEINBLOG Container-ID:'+MEINBLOG.id
+					
+					sh 'echo Etwas warten damit meinBlog Zeit hat bereit zu werden...'
+					sh 'sleep 60'
+				}
+				script{
+					sh 'echo Starting seleniumDriver'
+					def seleniumDriver = docker.image('selenium/standalone-chrome-debug')
+					seleniumDriver.pull()
+					WD_SELENIUM = seleniumDriver.run('-p 4444:4444 -p 5900:5900 --name seleniumRemote --link mein-blog-gk:mein-blog-GK')
+					sh 'echo WD_SELENIUM Container-ID:'+WD_SELENIUM.id
+				}
+			}
+		}
+		stage ('SeleniumTests') {
+			steps{
+				script{
+					if (fileExists('meinBlogGK/target')) {					
+						echo 'Target-Dir vorhanden'								
+						if(fileExists('meinBlogGK/target/extent-reports')){					
+							echo 'Reports-Dir vorhanden, wird geleert'
+							sh 'rm -rf meinBlogGK/target/extent-reports/*'
+						}else{
+							sh 'mkdir meinBlogGK/target/extent-reports'
+							echo 'Reports-Dir wurde angelegt'						  
+						}		
+					} else {
+						sh 'mkdir meinBlogGK/target'
+						echo 'Target-Dir wurde angelegt'	
+						sh 'mkdir meinBlogGK/target/extent-reports'
+						echo 'Reports-Dir wurde angelegt'	
+					}
+				}
+				dir('./meinBlogGK/') {
+					sh 'mvn test -P selenium -fn -Dwebdriver.remote.url="http://localhost:4444/wd/hub/" -DmeinBlogGK="http://mein-blog-gk:8080/meinBlogGK"'
+				}
+			}
+		}
+	}
+	post{
+		always {
+			script{
+		        sh "docker container stop db || true && docker container rm db || true"
+			    sh "docker container stop mein-blog-gk || true && docker container rm mein-blog-gk || true"
+				sh "docker container stop seleniumRemote || true && docker container rm seleniumRemote || true"
+			}			
+        }
+	}
+}
