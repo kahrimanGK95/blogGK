@@ -41,10 +41,10 @@ public abstract class SetupTestNG {
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
 		if (remotePropertiesGesetzt()) {
-			return new RemoteWebDriver(new URL(System.getProperty("webdriver.remote.url")), capabilities);
+			return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 		} else {
 			return new ChromeDriver(capabilities);
-		}
+		} 
 
 	}
 
