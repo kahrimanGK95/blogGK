@@ -32,8 +32,6 @@ pipeline{
 					db_meinBlogImage.pull()
 					DB_MEINBLOG = db_meinBlogImage.run('-p 3308:3306 --name db')
 					sh 'echo DB_MEINBLOG Container-ID:'+DB_MEINBLOG.id
-					sh 'echo Warte bis DB bereit ist...'
-					sh 'sleep 20'
 				}
 				script{
 					sh 'echo Starting meinBlogImage'
@@ -74,7 +72,7 @@ pipeline{
 					}
 				}
 				dir('./meinBlogGK/') {
-					sh 'mvn test -P selenium -fn -Dwebdriver.remote.url="http://localhost:4444/wd/hub/" -DmeinBlogGK="http://mein-blog-gk:8080/meinBlogGK/loginPage.xhtml"'
+					sh 'mvn test -P selenium -fn -Dwebdriver.remote.url="http://localhost:4444/wd/hub/" -DmeinBlogGK="http://127.0.0.1:8080/meinBlogGK/loginPage.xhtml"'
 				}
 			}
 		}
