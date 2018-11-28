@@ -32,6 +32,8 @@ pipeline{
 					db_meinBlogImage.pull()
 					DB_MEINBLOG = db_meinBlogImage.run('--name db')
 					sh 'echo DB_MEINBLOG Container-ID:'+DB_MEINBLOG.id
+					sh 'echo Warte bis DB bereit ist...'
+					sh 'sleep 40'
 				}
 				script{
 					sh 'echo Starting meinBlogImage'
