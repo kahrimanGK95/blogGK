@@ -33,7 +33,7 @@ pipeline{
 					DB_MEINBLOG = db_meinBlogImage.run('-p 3308:3306 --name db')
 					sh 'echo DB_MEINBLOG Container-ID:'+DB_MEINBLOG.id
 					sh 'echo Warte bis DB bereit ist...'
-					sh 'sleep 40'
+					sh 'sleep 20'
 				}
 				script{
 					sh 'echo Starting meinBlogImage'
@@ -43,7 +43,7 @@ pipeline{
 					sh 'echo MEINBLOG Container-ID:'+MEINBLOG.id
 					
 					sh 'echo Etwas warten damit meinBlog Zeit hat bereit zu werden...'
-					sh 'sleep 60'
+					sh 'sleep 30'
 				}
 				script{
 					sh 'echo Starting seleniumDriver'
