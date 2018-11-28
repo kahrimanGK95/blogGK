@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,8 @@ public class LoginLogoutTestNG extends SetupTestNG{
 	
 	@Test
 	public void checkToLoginLogout() throws IllegalArgumentException, IOException, InterruptedException {
-		browser.manage().window().maximize();
+		Dimension d = new Dimension(1044, 784);
+		browser.manage().window().setSize(d);
 		browser.get(getProperties().getProperty("meinBlogGK"));
 		Thread.sleep(500);
 		
