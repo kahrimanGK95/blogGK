@@ -41,7 +41,7 @@ pipeline{
 					sh 'echo MEINBLOG Container-ID:'+MEINBLOG.id
 					
 					sh 'echo Etwas warten damit meinBlog Zeit hat bereit zu werden...'
-					sh 'sleep 30'
+					sh 'sleep 10'
 				}
 				script{
 					sh 'echo Starting seleniumDriver'
