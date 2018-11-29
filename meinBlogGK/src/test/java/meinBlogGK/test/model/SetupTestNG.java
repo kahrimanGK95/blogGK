@@ -17,6 +17,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
 
 public abstract class SetupTestNG {
 
@@ -47,13 +48,21 @@ public abstract class SetupTestNG {
 		} 
 
 	}
+	
+	@BeforeSuite
+	public void beforeSuite() throws IllegalArgumentException, IOException {
+		initializeChromeDriver();
+	} 
+
+	private void initializeChromeDriver() throws IllegalArgumentException, IOException {
+		System.setProperty("webdriver.chrome.driver", getProperties().getProperty("pathToChromeDriver"));
+	}
 
 	@BeforeClass
     public void beforeClassInitialization() throws IllegalArgumentException, IOException {
-    	System.setProperty("webdriver.chrome.driver", getProperties().getProperty("pathToChromeDriver"));
         browser = getWebBrowser();
     }
-
+	
 	@AfterClass
 	public void afterClass() {
 		browser.close();
