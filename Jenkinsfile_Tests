@@ -72,7 +72,7 @@ pipeline{
 					}
 				}
 				dir('./meinBlogGK/') {
-					sh 'mvn test -P selenium -fn -Dwebdriver.remote.url="http://localhost:4444/wd/hub/" -DblogGK="http://mein-blog-gk:8080/meinBlogGK/loginPage.xhtml"'
+					sh 'mvn test -P selenium -fn -Dwebdriver.remote.url="http://localhost:4444/wd/hub/" -DblogGK="http://mein-blog-gk:8080/meinBlogGK"'
 				}
 			}
 		}
