@@ -11,25 +11,25 @@ import org.testng.annotations.Test;
 
 import meinBlogGK.test.model.SetupTestNG;
 
-public class LoginNotToBlogTestNG extends SetupTestNG{
-	
+public class LoginNotToBlogTestNG extends SetupTestNG {
+
 	@Test
 	public void loginToBlogWithFailure() throws IllegalArgumentException, IOException, InterruptedException {
 		Dimension d = new Dimension(1044, 784);
 		browser.manage().window().setSize(d);
 		browser.get(getUrl());
 		Thread.sleep(500);
-		
+
 		WebElement inputBenutzername = browser.findElement(By.id("loginForm:username"));
 		WebElement inputPassword = browser.findElement(By.id("loginForm:password"));
-		
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("WrongPassword");
-		browser.wait(10);
+
+		Thread.sleep(500);
 		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
 		clickButton.click();
 		Thread.sleep(1000);
-		
+
 		String title = browser.findElement(By.xpath("/html/body/div[1]/div[1]/h1")).getText();
 		assertEquals("Herzlich Willkommen", title);
 	}

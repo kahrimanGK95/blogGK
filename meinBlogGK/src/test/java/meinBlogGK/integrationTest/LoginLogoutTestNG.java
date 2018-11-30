@@ -22,11 +22,10 @@ public class LoginLogoutTestNG extends SetupTestNG{
 		
 		WebElement inputBenutzername = browser.findElement(By.id("loginForm:username"));
 		WebElement inputPassword = browser.findElement(By.id("loginForm:password"));
-		
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("Gokhan1995");
 		
-		browser.wait(10);
+		Thread.sleep(500);
 		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
 		clickButton.click();
 		Thread.sleep(1000);
