@@ -27,7 +27,7 @@ public class LoginToBlogTestNG extends SetupTestNG {
 		inputPassword.sendKeys("Gokhan1995");
 
 		Thread.sleep(500);
-		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
+		WebElement clickButton = browser.findElement(By.cssSelector("input[type=submit]"));
 		clickButton.click();
 		Thread.sleep(1000);
 		
