@@ -26,7 +26,7 @@ public class LoginLogoutTestNG extends SetupTestNG{
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("Gokhan1995");
 		
-		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
+		WebElement clickButton = browser.findElement(By.xpath("//*[@id=\"loginForm:einloggen\"]"));
 		clickButton.click();
 		Thread.sleep(1000);
 		

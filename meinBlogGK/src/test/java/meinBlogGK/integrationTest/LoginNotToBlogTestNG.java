@@ -25,7 +25,7 @@ public class LoginNotToBlogTestNG extends SetupTestNG{
 		
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("WrongPassword");
-		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
+		WebElement clickButton = browser.findElement(By.xpath("//*[@id=\"loginForm:einloggen\"]"));
 		clickButton.click();
 		Thread.sleep(1000);
 		
