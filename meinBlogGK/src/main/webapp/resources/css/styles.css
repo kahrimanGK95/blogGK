@@ -2,13 +2,7 @@
 	padding: 10px;
 }
 
-.welcomeFirst {
-	background-image: linear-gradient(277deg, #1b81d7 0%, #1f4869 100%);
-	height: auto;
-	padding: 32px;
-}
-
-.welcomeSecond {
+.welcome{
 	background-image: linear-gradient(277deg, #1b81d7 0%, #1f4869 100%);
 	height: auto;
 	padding: 32px;

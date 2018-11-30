@@ -51,7 +51,7 @@ public class UserBean implements Serializable {
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", username);
-			return "admin";
+			return "admin?faces-redirect=true";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
 					"Ungültiger Benutzer und Passwort", "Bitte geben Sie korrekte Anmeldedaten ein"));
