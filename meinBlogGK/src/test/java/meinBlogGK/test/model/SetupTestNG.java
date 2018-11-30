@@ -71,6 +71,18 @@ public abstract class SetupTestNG {
 	private static boolean remotePropertiesGesetzt() {
 		return System.getProperty("webdriver.remote.url") != null;
 	}
+	
+	private static boolean URLgesetzt() {
+		return System.getProperty("blogGK")!=null;
+	}
+	
+	public String getUrl() throws IllegalArgumentException, IOException {
+		if(URLgesetzt()) {
+			return System.getProperty("blogGK");
+		}else {
+			return getProperties().getProperty("meinBlogGK");
+		}
+	}
 
 	public static Properties getProperties() throws IOException, IllegalArgumentException {
 

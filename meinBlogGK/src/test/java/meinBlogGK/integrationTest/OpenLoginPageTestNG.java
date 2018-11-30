@@ -16,7 +16,7 @@ public class OpenLoginPageTestNG extends SetupTestNG {
 	public void openBlogPage() throws IllegalArgumentException, IOException, InterruptedException {
 		Dimension d = new Dimension(1044, 784);
 		browser.manage().window().setSize(d);
-		browser.get(getProperties().getProperty("meinBlogGK"));
+		browser.get(getUrl());
 		Thread.sleep(1000);
 		String title = browser.findElement(By.xpath("/html/body/div[1]/div[1]/h1")).getText();
 		assertEquals("Herzlich Willkommen", title);

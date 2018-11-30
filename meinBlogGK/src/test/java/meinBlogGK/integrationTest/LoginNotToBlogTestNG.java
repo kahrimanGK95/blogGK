@@ -17,7 +17,7 @@ public class LoginNotToBlogTestNG extends SetupTestNG{
 	public void loginToBlogWithFailure() throws IllegalArgumentException, IOException, InterruptedException {
 		Dimension d = new Dimension(1044, 784);
 		browser.manage().window().setSize(d);
-		browser.get(getProperties().getProperty("meinBlogGK"));
+		browser.get(getUrl());
 		Thread.sleep(500);
 		
 		WebElement inputBenutzername = browser.findElement(By.id("loginForm:username"));
