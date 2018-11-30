@@ -31,7 +31,7 @@ public class LoginToBlogTestNG extends SetupTestNG {
 		clickButton.click();
 		Thread.sleep(1000);
 		
-		String blogTitle = browser.findElement(By.xpath("/html/body/div/h1")).getText();
+		String blogTitle = browser.findElement(By.cssSelector(".welcomeSecond")).getText();
 		assertEquals("Herzlich Willkomen zu unserem Blog-GK", blogTitle);
 		
 		
