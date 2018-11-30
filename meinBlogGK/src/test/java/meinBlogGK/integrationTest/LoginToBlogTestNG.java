@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import meinBlogGK.test.model.SetupTestNG;
@@ -29,6 +31,8 @@ public class LoginToBlogTestNG extends SetupTestNG {
 		WebElement clickButton = browser.findElement(By.cssSelector("input[type=submit]"));
 		clickButton.click();
 
+		WebDriverWait wait = new WebDriverWait(browser, 30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div/h1")));
 		String blogTitle = browser.findElement(By.xpath("/html/body/div/h1")).getText();
 		assertEquals("Herzlich Willkomen zu unserem Blog-GK", blogTitle);
 		
