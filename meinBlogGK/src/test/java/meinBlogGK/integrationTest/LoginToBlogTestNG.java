@@ -25,7 +25,8 @@ public class LoginToBlogTestNG extends SetupTestNG {
 		
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("Gokhan1995");
-		browser.findElement(By.id("loginForm:einloggen")).click();
+		WebElement clickButton = browser.findElement(By.id("loginForm:einloogen"));
+		clickButton.click();
 		Thread.sleep(1000);
 		
 		String blogTitle = browser.findElement(By.xpath("/html/body/div/h1")).getText();
