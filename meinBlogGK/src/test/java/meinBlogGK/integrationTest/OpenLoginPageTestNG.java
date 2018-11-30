@@ -19,7 +19,7 @@ public class OpenLoginPageTestNG extends SetupTestNG {
 		browser.get(getUrl());
 		Thread.sleep(1000);
 		String title = browser.findElement(By.xpath("/html/body/div[1]/div[1]/h1")).getText();
-		assertEquals("Herzlich Willkommaaen", title);
+		assertEquals("Herzlich Willkommen", title);
 		
 	}
 }
