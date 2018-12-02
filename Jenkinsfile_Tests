@@ -30,7 +30,7 @@ pipeline{
 					sh 'echo Starting db_meinBlogImage'
 					def db_meinBlogImage = docker.image('goekhan1995/meinblog_db:0.0.1-SNAPSHOT')
 					db_meinBlogImage.pull()
-					DB_MEINBLOG = db_meinBlogImage.run('-p 3308:3306 --name db')
+					DB_MEINBLOG = db_meinBlogImage.run('-p 3308:3306 --name db -e MYSQL_ROOT_PASSWORD=root')
 					sh 'echo DB_MEINBLOG Container-ID:'+DB_MEINBLOG.id
 				}
 				script{
