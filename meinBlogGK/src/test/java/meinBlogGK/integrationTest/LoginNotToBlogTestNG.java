@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -15,8 +14,9 @@ public class LoginNotToBlogTestNG extends SetupTestNG {
 
 	@Test
 	public void loginToBlogWithFailure() throws IllegalArgumentException, IOException, InterruptedException {
-		Dimension d = new Dimension(1044, 784);
-		browser.manage().window().setSize(d);
+//		Dimension d = new Dimension(1044, 784);
+//		browser.manage().window().setSize(d);
+		browser.manage().window().maximize();
 		browser.get(getUrl());
 		Thread.sleep(500);
 
@@ -25,10 +25,8 @@ public class LoginNotToBlogTestNG extends SetupTestNG {
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("WrongPassword");
 
-		Thread.sleep(500);
-		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
+		WebElement clickButton = browser.findElement(By.cssSelector("input[type=submit]"));
 		clickButton.click();
-		Thread.sleep(1000);
 
 		String title = browser.findElement(By.xpath("/html/body/div[1]/div[1]/h1")).getText();
 		assertEquals("Herzlich Willkommen", title);

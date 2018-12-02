@@ -27,6 +27,21 @@ public abstract class SetupTestNG {
 
 	private final static String propertiesPath = "test_config.properties";
 
+	
+	@BeforeSuite
+	public void beforeSuite() throws IllegalArgumentException, IOException {
+		initializeChromeDriver();
+	}
+	
+	private void initializeChromeDriver() throws IllegalArgumentException, IOException {
+		System.setProperty("webdriver.chrome.driver", getProperties().getProperty("pathToChromeDriver"));
+	}
+	
+	@BeforeClass
+    public void beforeClassInitialization() throws IllegalArgumentException, IOException {
+        browser = getWebBrowser();
+    }
+	
 	private static WebDriver getWebBrowser() throws MalformedURLException {
 
 		Map<String, Object> preferences = new Hashtable<>();
@@ -49,27 +64,13 @@ public abstract class SetupTestNG {
 
 	}
 	
-	@BeforeSuite
-	public void beforeSuite() throws IllegalArgumentException, IOException {
-		initializeChromeDriver();
-	} 
-
-	private void initializeChromeDriver() throws IllegalArgumentException, IOException {
-		System.setProperty("webdriver.chrome.driver", getProperties().getProperty("pathToChromeDriver"));
+	private static boolean remotePropertiesGesetzt() {
+		return System.getProperty("webdriver.remote.url") != null;
 	}
-
-	@BeforeClass
-    public void beforeClassInitialization() throws IllegalArgumentException, IOException {
-        browser = getWebBrowser();
-    }
 	
 	@AfterClass
 	public void afterClass() {
 		browser.close();
-	}
-
-	private static boolean remotePropertiesGesetzt() {
-		return System.getProperty("webdriver.remote.url") != null;
 	}
 	
 	private static boolean URLgesetzt() {

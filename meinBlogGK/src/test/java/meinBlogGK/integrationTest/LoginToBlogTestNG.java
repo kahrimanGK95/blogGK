@@ -5,7 +5,6 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,8 +16,9 @@ public class LoginToBlogTestNG extends SetupTestNG {
 	
 	@Test
 	public void loginToBlogPageWithSuccess() throws IllegalArgumentException, IOException, InterruptedException {
-		Dimension d = new Dimension(1044, 784);
-		browser.manage().window().setSize(d);
+//		Dimension d = new Dimension(1044, 784);
+//		browser.manage().window().setSize(d);
+		browser.manage().window().maximize();
 		browser.get(getUrl());
 		Thread.sleep(500);
 		
