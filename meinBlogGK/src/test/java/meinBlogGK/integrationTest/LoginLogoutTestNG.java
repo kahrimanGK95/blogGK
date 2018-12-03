@@ -26,7 +26,7 @@ public class LoginLogoutTestNG extends SetupTestNG {
 		WebElement clickButton = browser.findElement(By.cssSelector("input[type=submit]"));
 		clickButton.click();
 
-		WebElement angemeldeterName = browser.findElement(By.id("infoPerson:person"));
+		WebElement angemeldeterName = browser.findElement(By.xpath("//*[@id=\"infoPerson:person\"]"));
 		String name = angemeldeterName.getText();
 		assertEquals("Angemeldet: Kahriman", name);
 	}
