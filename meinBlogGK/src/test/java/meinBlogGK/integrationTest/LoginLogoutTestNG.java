@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import meinBlogGK.test.model.SetupTestNG;
@@ -23,14 +25,15 @@ public class LoginLogoutTestNG extends SetupTestNG {
 		inputBenutzername.sendKeys("Kahriman");
 		inputPassword.sendKeys("Gokhan1995");
 
-		WebElement clickButton = browser.findElement(By.id("loginForm:einloggen"));
+		WebElement clickButton = browser.findElement(By.cssSelector("input[type=submit]"));
 		clickButton.click();
 
-		String angemeldeterName = browser.findElement(By.xpath("//*[@id=\'ausloggenForm\']/p")).getText();
+		WebDriverWait wait = new WebDriverWait(browser, 10);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ausloggenForm:angemeldetePerson")));
+		String angemeldeterName = browser.findElement(By.id("ausloggenForm:angemeldetePerson")).getText();
 		assertEquals("Angemeldet: Kahriman", angemeldeterName);
 
 		browser.findElement(By.id("ausloggenForm:ausloggen")).click();
-		Thread.sleep(500);
 
 		String title = browser.findElement(By.xpath("/html/body/div[1]/div[1]/h1")).getText();
 		assertEquals("Herzlich Willkommen", title);
