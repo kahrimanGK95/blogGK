@@ -29,8 +29,8 @@ public class LoginLogoutTestNG extends SetupTestNG {
 		clickButton.click();
 
 		WebDriverWait wait = new WebDriverWait(browser, 10);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ausloggenForm:angemeldetePerson")));
-		String angemeldeterName = browser.findElement(By.id("ausloggenForm:angemeldetePerson")).getText();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".personenName")));
+		String angemeldeterName = browser.findElement(By.cssSelector(".personenName")).getText();
 		assertEquals("Angemeldet: Kahriman", angemeldeterName);
 
 		browser.findElement(By.id("ausloggenForm:ausloggen")).click();

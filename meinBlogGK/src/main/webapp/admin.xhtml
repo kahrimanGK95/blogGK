@@ -17,7 +17,7 @@
 
 	<h:body>
 		<h:form id="ausloggenForm">
-			<h:outputText id="angemeldetePerson" value="Angemeldet: #{userBean.username}" />
+			<p class="personenName">Angemeldet: #{userBean.username}</p>
 			<br />
 			<h:commandLink id="ausloggen" value="Ausloggen"
 				action="#{userBean.logout}" />

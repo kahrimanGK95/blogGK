@@ -2,7 +2,7 @@
 	padding: 10px;
 }
 
-.welcome{
+.welcome {
 	background-image: linear-gradient(277deg, #1b81d7 0%, #1f4869 100%);
 	height: auto;
 	padding: 32px;
@@ -23,4 +23,8 @@
 	text-align: center;
 	bottom: 10px;
 	position: absolute;
+}
+
+.personenName {
+	font-weight: bold;
 }
