@@ -25,6 +25,10 @@
 	position: absolute;
 }
 
+.info{
+	padding-top: 10px;
+}
+
 .personenName {
 	font-weight: bold;
 }
