@@ -13,8 +13,6 @@ public class OpenLoginPageTestNG extends SetupTestNG {
 	
 	@Test
 	public void openBlogPage() throws IllegalArgumentException, IOException, InterruptedException {
-		//Dimension d = new Dimension(1044, 784);
-		//browser.manage().window().setSize(d);
 		browser.manage().window().maximize();
 		browser.get(getUrl());
 		Thread.sleep(1000);

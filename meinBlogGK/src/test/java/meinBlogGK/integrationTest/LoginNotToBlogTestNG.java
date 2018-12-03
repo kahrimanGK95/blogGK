@@ -14,8 +14,6 @@ public class LoginNotToBlogTestNG extends SetupTestNG {
 
 	@Test
 	public void loginToBlogWithFailure() throws IllegalArgumentException, IOException, InterruptedException {
-//		Dimension d = new Dimension(1044, 784);
-//		browser.manage().window().setSize(d);
 		browser.manage().window().maximize();
 		browser.get(getUrl());
 		Thread.sleep(500);
