@@ -21,13 +21,11 @@
 		<div class="login">
 			<h:form id="loginForm" style="width:35%;">
 				<p:fieldset legend="Login">
-					<h:panelGrid columns="3" cellpadding="5">
+					<h:panelGrid columns="2" cellpadding="5">
 						<h:outputText value="Benutzername:" />
 						<h:inputText id="username" value="#{userBean.username}" />
-						<h:message for="username"></h:message>
 						<h:outputText value="Passwort:" />
 						<h:inputText id="password" value="#{userBean.password}" />
-						<h:message for="password"></h:message>
 						<h:commandButton id="einloggen" value="Einloggen"
 							action="#{userBean.checkLogin}" />
 					</h:panelGrid>

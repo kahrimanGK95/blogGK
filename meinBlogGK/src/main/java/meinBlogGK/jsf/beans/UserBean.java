@@ -3,8 +3,6 @@ package meinBlogGK.jsf.beans;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 
@@ -47,16 +45,14 @@ public class UserBean implements Serializable {
 
 	public String checkLogin() {
 		boolean valid = LoginDAO.validate(username, password);
-
+		String redirectPage = "";
+		
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", username);
-			return "admin?faces-redirect=true";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"Ungültiger Benutzer und Passwort", "Bitte geben Sie korrekte Anmeldedaten ein"));
-			return "login";
+			redirectPage = "admin?faces-redirect=true";
 		}
+		return redirectPage;
 	}
 
 	public String logout() {
