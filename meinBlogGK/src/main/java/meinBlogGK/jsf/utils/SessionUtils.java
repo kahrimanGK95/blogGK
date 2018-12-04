@@ -4,6 +4,12 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * Die Klasse erzeugt und kontrolliert die Sitzungen für den angemeldeten User.
+ * 
+ * @author gokha
+ *
+ */
 public class SessionUtils {
 
 	public static HttpSession getSession() {

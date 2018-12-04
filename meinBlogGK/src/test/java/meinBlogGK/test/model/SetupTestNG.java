@@ -19,6 +19,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
+/**
+ * Die abstrakte Klasse SetupTestNG ist eine Generalisierungsklasse, von der die
+ * Testklassen erben. Sie ist zuständig für das Initialisiern des ChromeDrivers
+ * und Erzeugen des notwendigen Browsers.
+ * 
+ * @author gokha
+ *
+ */
 public abstract class SetupTestNG {
 
 	public static final Logger LOG = Logger.getLogger(SetupTestNG.class.getName());
@@ -27,21 +35,20 @@ public abstract class SetupTestNG {
 
 	private final static String propertiesPath = "test_config.properties";
 
-	
 	@BeforeSuite
 	public void beforeSuite() throws IllegalArgumentException, IOException {
 		initializeChromeDriver();
 	}
-	
+
 	private void initializeChromeDriver() throws IllegalArgumentException, IOException {
 		System.setProperty("webdriver.chrome.driver", getProperties().getProperty("pathToChromeDriver"));
 	}
-	
+
 	@BeforeClass
-    public void beforeClassInitialization() throws IllegalArgumentException, IOException {
-        browser = getWebBrowser();
-    }
-	
+	public void beforeClassInitialization() throws IllegalArgumentException, IOException {
+		browser = getWebBrowser();
+	}
+
 	private static WebDriver getWebBrowser() throws MalformedURLException {
 
 		Map<String, Object> preferences = new Hashtable<>();
@@ -60,27 +67,27 @@ public abstract class SetupTestNG {
 			return new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capabilities);
 		} else {
 			return new ChromeDriver(capabilities);
-		} 
+		}
 
 	}
-	
+
 	private static boolean remotePropertiesGesetzt() {
 		return System.getProperty("webdriver.remote.url") != null;
 	}
-	
+
 	@AfterClass
 	public void afterClass() {
 		browser.close();
 	}
-	
+
 	private static boolean URLgesetzt() {
-		return System.getProperty("blogGK")!=null;
+		return System.getProperty("blogGK") != null;
 	}
-	
+
 	public String getUrl() throws IllegalArgumentException, IOException {
-		if(URLgesetzt()) {
+		if (URLgesetzt()) {
 			return System.getProperty("blogGK");
-		}else {
+		} else {
 			return getProperties().getProperty("meinBlogGK");
 		}
 	}

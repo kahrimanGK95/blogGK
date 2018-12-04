@@ -10,10 +10,18 @@ import org.slf4j.LoggerFactory;
 
 import meinBlogGK.jsf.utils.DataConnect;
 
+/**
+ * Die Klasse LoginDAO enthält eine boolean-Methode validate, die dafür
+ * zuständig ist, in der MySQL-Datenbank abzufragen, ob die eingegebenen Daten
+ * richtig sind.
+ * 
+ * @author gokha
+ *
+ */
 public class LoginDAO {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LoginDAO.class);
-	
+
 	public static boolean validate(String user, String password) {
 		Connection connect = null;
 		PreparedStatement ps = null;
@@ -31,7 +39,7 @@ public class LoginDAO {
 				return true;
 			}
 		} catch (SQLException e) {
-			LOG.error(e.getMessage(),e);
+			LOG.error(e.getMessage(), e);
 		} finally {
 			DataConnect.close(connect);
 		}
