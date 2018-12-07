@@ -1,14 +1,10 @@
 version: '3'
 services:
   db:
-    image: mysql:8.0.11
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: meinbloggk
+    build: ./Docker_DB .
+    image: blog/db:latest
     ports:
     - "3308:3306"
-    volumes:
-    - ./sql/initializeDB.sql:/docker-entrypoint-initdb.d/initializeDB.sql
   mein-blog-gk:
     depends_on:
     - db
