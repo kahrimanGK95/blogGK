@@ -1,4 +1,4 @@
-FROM goekhan1995/meinblog:0.1
+FROM jboss/wildfly
 
 COPY ./standalone /opt/jboss/standalone
 COPY mysql-connector-java-8.0.11.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
