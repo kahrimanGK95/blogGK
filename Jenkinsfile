@@ -38,7 +38,7 @@ pipeline{
 		stage ('docker-build mysql image') {
 			steps{
 				
-				/* Image bauen, ohne Pushen*/
+				/* Image bauen und pushen*/
 				dir('./docker/dockerbuild/mysql/'){
 					script{
 						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
@@ -57,7 +57,7 @@ pipeline{
 				/* Deployments*/
 				sh "cp ./meinBlogGK/target/meinBlogGK.war ./docker/dockerbuild/jboss/standalone/deployments"
 				
-				/* Image bauen, ohne Pushen*/
+				/* Image bauen und pushen*/
 				dir('./docker/dockerbuild/jboss'){
 					script{
 						docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {

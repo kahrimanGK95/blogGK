@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import meinBlogGK.test.model.SetupTestNG;
 
 /**
- * Die Testklasse testes das mit Absicht geplante Fehlschlag des Logins, um zu
+ * Die Testklasse testet das mit Absicht geplante Fehlschlag des Logins, um zu
  * überprüfen, ob die Datenbank-Abfrage richtig umgesetzt wird.
  * 
  * @author gokha
