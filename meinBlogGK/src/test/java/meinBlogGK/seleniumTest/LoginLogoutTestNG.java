@@ -1,4 +1,4 @@
-package meinBlogGK.integrationTest;
+package meinBlogGK.seleniumTest;
 
 import static org.testng.Assert.assertEquals;
 

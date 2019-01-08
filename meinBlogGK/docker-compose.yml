@@ -1,15 +1,19 @@
 version: '3'
 services:
   db:
-    build: ./Docker_DB .
-    image: blog/db:latest
+#    build: ./Docker_DB .
+#    image: blog/db:latest
+    image: goekhan1995/meinblog_db:0.0.1-SNAPSHOT
+    environment:
+      MYSQL_ROOT_PASSWORD: root
     ports:
     - "3308:3306"
   mein-blog-gk:
     depends_on:
     - db
-    build: .
-    image: blog/gk:latest
+#    build: .
+#    image: blog/gk:latest
+    image: goekhan1995/meinblog:0.0.1-SNAPSHOT
     ports:
       - "8080:8080"
     environment:

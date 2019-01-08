@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="testsuite" verbose="1">
-	<test name="integrationsTestaufBlog">
+	<test name="seleniumTestBlogAnwendung">
 		<packages>
-			<package name="meinBlogGK.integrationTest"></package>
+			<package name="meinBlogGK.seleniumTest"></package>
 		</packages>
 	</test>
 </suite>
